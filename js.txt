@@ -1,0 +1,222 @@
+function exampleFunction(){
+    if(true){
+        var functionScopedVar="I am function scoped";
+    }
+
+    console.log(functionScopedVar);
+}
+exampleFunction();
+console.log(functionScopedVar);
+
+---------------------------------------------------------------
+
+const constantVar="I am constant";
+if(true){
+    console.log(constantVar);
+}
+
+----------------------------------------------------------------
+
+#Var variable can be used anywhere in the function, but let and const can only be used in the block.
+#value of const variable can't be changed ever.
+---------------------------------------------------------------------
+
+function exampleFunction(){
+    if(true){
+        var functionScopedVar=10;
+        var functionScopedVar=20;
+
+    }
+    console.log(functionScopedVar);
+}
+exampleFunction();
+// console.log(functionScopedVar);
+---------------------------------------------------------------------
+
+function exampleFunction(){
+    if(true){
+        let functionScopedVar=10;
+        let functionScopedVar=20;
+
+    console.log(functionScopedVar);
+    }
+
+}
+exampleFunction();
+
+#Let variables can't be written twice
+-------------------------------------------------------
+
+var shadowVar="I am global";
+function exampleFunction(){
+    var shadowVar="I am local";
+    console.log(shadowVar);
+}
+console.log(shadowVar);
+
+#local variables get preference over global variable
+--------------------------------------------------------
+Hoisting with var
+
+console.log(x);
+var x=5;
+console.log(x);
+-----------------------------------------------------
+console.log(x);
+let x=5;
+console.log(x);
+
+#Hoisitng allows you to console the variable before even declared the variable
+#but in case of let, we can't use hoisting technique.
+-----------------------------------------------------------------
+
+
+let name="John";
+console.log(typeof(name));
+
+------------------------------------------------------------------------
+
+object data type:
+a.object:
+
+let person={
+    name: "Alice",
+    age: 30,
+    isStudent:false
+};
+console.log(person.name);
+
+-------------------------------------------------------------------------
+
+array;
+let fruits=[1,"banana","orange"];
+console.log(fruits[0]);
+--------------------------------------------------------------------------
+
+let result=5+"5";
+console.log(result); //Type coercion
+---------------------------------------------------------------------------
+
+let a=10;
+let b=5;
+console.log(a>b);
+console.log(1!==0);
+-----------------------------------------------------------------------------
+
+
+
+For loop:
+for(let i=0;i<5;i++)
+{
+    console.log(i);
+}
+---------------------------------------------------------------------------
+
+while loop:
+
+let count=0;
+while(count<5){
+    console.log(count);
+    count++;
+}
+
+#while loop is also known as entry control
+#do-while loop is also known as exit control
+-------------------------------------------------------------------------
+do while
+
+let count=0;
+do{
+    console.log(count);
+    count++;
+} while (count<5);
+------------------------------------------------------------------------
+
+#a function without a name is called anynomous function
+
+//object literal notation
+let car={
+    make:"Toyota",
+    make1: "Camry",
+    year: 2022,
+    isElectric: false,
+    start: function() {
+        
+        console.log("Engine started!");
+    
+    }
+    
+};
+car.start(); //calling method
+console.log(car.make); //accessing properties
+console.log(car.year);
+--------------------------------------------------------------------------
+
+//object constructor function
+function Book(title, author, year){
+    this.title=title;
+    this.author=author;
+    this.year=year;
+}
+
+//creating instances of the object
+let book1= new Book("The catcher in the eye", "J.D Salinger", 1951);
+let book2= new Book("Harry Potter and the Philosopher's Stone", "J.K Rowing", 1990); 
+console.log(book1);
+console.log(book2);
+console.log(book1.author);
+console.log(book2.author);
+---------------------------------------------------------------------------------
+
+//array
+let fruits=["apple","banana","orange","grape"];
+console.log(fruits[0]);
+console.log(fruits[2]);
+----------------------------------------------------------------------------------
+array operations:
+
+let fruits=["apple","banana","orange","grape"];
+console.log(fruits);
+// fruits.push("kiwi"); //add elemets to end 
+// console.log(fruits);
+// fruits.unshift("mango"); //Adding elements to the beginning
+// console.log(fruits);
+// let removedLast=fruits.pop(); //removing the last element
+// let removedFirst=fruits.shift(); //removing the first element
+// console.log(fruits);
+// let indexOfOrange=fruits.indexOf("orange");
+// console.log(indexOfOrange);
+// for(let i=0;i<fruits.length;i++)
+// {
+//     console.log(fruits[i]);
+// }
+// let citrus=fruits.slice(1,3);
+// console.log(citrus);
+let removed=fruits.splice(1,2, "pear", "melon"); //modifying an array
+let moreFruits=["grapefruit", "pineapple"]; //concatenating array
+let allFruits=fruits.concat(moreFruits);
+console.log(removed);
+console.log(moreFruits);
+console.log(allFruits);
+-----------------------------------------------------------------------------------
+
+Functions:
+const multiply=function(a,b){
+    return a*b;
+};
+//Invocation
+const product= multiply(6,7);
+console.log('Function Expression- product: ', product);
+------------------------------------------------------------------------------------
+
+const subtract = (a,b) => a-b; //"->" known as array functions
+const difference=subtract(5,1);
+console.log('Arrow function - difference: ',difference);
+-------------------------------------------------------------------------------------
+try{
+    throw new Error("An error");
+} catch (error){
+    console.error(error.message);
+} finally {
+    console.log("Cleanup code");
+}
