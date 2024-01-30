@@ -1,0 +1,7 @@
+git init -> to make new repository
+git status -> to see the status of my files
+git add . -> using this, all the files will be saved
+git add <filename> -> to save exactly one file
+git config --global user.email "email" -> to know the user
+git commit -m "message" -> to commit
+git log -> to see the commit message

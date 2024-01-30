@@ -17,8 +17,8 @@
 //     isStudent:false
 // };
 // console.log(person.name);
-// let result=5+"5";
-// console.log(result); //Type coercion
+let result=5+"5";
+console.log(result); //Type coercion
 let a=10;
 let b=5;
 console.log(a>b);
