@@ -5,3 +5,6 @@ git add <filename> -> to save exactly one file
 git config --global user.email "email" -> to know the user
 git commit -m "message" -> to commit
 git log -> to see the commit message
+git remote add <remote-name> <repository-url> -- to add the github repository
+git branch --list -> to see the branch name
+git push -u <remote-name> <branch-name> -> to push the files to repository

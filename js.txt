@@ -201,7 +201,7 @@ console.log(allFruits);
 -----------------------------------------------------------------------------------
 
 Functions:
-const multiply=function(a,b){
+const multiply=function(a,b){ //Anynomous functions
     return a*b;
 };
 //Invocation
@@ -209,7 +209,7 @@ const product= multiply(6,7);
 console.log('Function Expression- product: ', product);
 ------------------------------------------------------------------------------------
 
-const subtract = (a,b) => a-b; //"->" known as array functions
+const subtract = (a,b) => a-b; //"->" known as arrow functions
 const difference=subtract(5,1);
 console.log('Arrow function - difference: ',difference);
 -------------------------------------------------------------------------------------
@@ -219,4 +219,97 @@ try{
     console.error(error.message);
 } finally {
     console.log("Cleanup code");
+} 
+-----------------------------------------------------------------------------------------
+Timer:
+setTimeoutFunction
+const delayedFunction =() => {
+    console.log('Delayed Function executed!');
 }
+setTimeout(delayedFunction,2000);   //executes after 2 seconds
+-----------------------------------------------------------------------------------------
+
+//setInterval
+const repeatedFunction = () =>{
+    console.log('Repeat function executed');
+}
+const intervalid=setInterval(repeatedFunction,1000) //Executes every 1 second
+
+----------------------------------------------------------------------------------------
+
+//clearInterval
+//function to be executed at intervals
+function repeatedFunction(){
+    console.log('Executing repeated fucntion..');
+}
+//set an interval (execute repeatedFunction every 1000 milliseconds)
+const intervalid=setInterval(repeatedFunction,1000);
+//after some time (e.g., 5000 milliseconds), stop the interval
+setTimeout(() => {
+    clearInterval(intervalid); //stop the interval
+    console.log('Interval stopped');
+}, 5000);
+----------------------------------------------------------------------------------------
+callback functions:
+callbacks are fucntions that are passed as arguments to otther functions and are executed after the execution of the asynchronous function
+Synchronus callback functions execute instantly, but asynchronous callback functions execute at a later time.
+//the fucntions who take othe rucntions as arguments, is called higher order functions
+
+//Synchronous callback function example
+function parentFunction(name, callabck){
+    callabck();
+    console.log("Hey "+name);
+
+
+}
+function randomFunction(){
+    console.log("Hey I am callback function");
+}
+parentFunction("Random String", randomFunction);
+
+-----------------------------------------------------------------------------------------
+Asynchronous function
+function parentFunction(name, callabck){
+    setTimeout(callabck,1000);
+    console.log("Hey "+name);
+
+
+}
+function randomFunction(){
+    console.log("Hey I am call back function");
+}
+parentFunction("Random String", randomFunction);
+
+-----------------------------------------------------------------
+
+function parentFunction(name, callabck){
+    setTimeout(callabck,1000);
+    console.log("Hey "+name);
+
+
+}
+// function randomFunction(){
+//     console.log("Hey I am call back function");
+// }
+parentFunction("Random String", function(){
+    console.log("Hey, I am a callback function"); //using anonymous function
+});
+---------------------------------------------------------------------------------
+
+const parentFunction=(name, callabck)=>{ //using arrow function
+    setTimeout(callabck,1000);
+    console.log("Hey "+name);
+
+
+}
+// function randomFunction(){
+//     console.log("Hey I am call back function");
+// }
+parentFunction("Random String", function(){
+    console.log("Hey, I am a callback function"); 
+});
+---------------------------------------------------------------------------------
+//More shorter
+const parentFunction= (name, callback) =>
+(setTimeout(callback, 1000), console.log("Hey, "+name));
+parentFunction("Random string", () =>console.log("Hey, I am a callback function"));
