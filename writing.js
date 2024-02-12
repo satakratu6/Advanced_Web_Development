@@ -12,7 +12,7 @@ const server = http.createServer((req, res) => {
                 return;
             }
             res.writeHead(200, {'Content-Type': 'text/plain'});
-            res.end('File context: ' + message); 
+            res.end('File context: ' + message);
         });
     }
 });
