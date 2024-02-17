@@ -143,7 +143,7 @@ let car={
     start: function() {
         
         console.log("Engine started!");
-    
+     
     }
     
 };
@@ -251,13 +251,13 @@ setTimeout(() => {
 }, 5000);
 ----------------------------------------------------------------------------------------
 callback functions:
-callbacks are fucntions that are passed as arguments to otther functions and are executed after the execution of the asynchronous function
+callbacks are fucntions that are passed as arguments to other functions and are executed after the execution of the asynchronous function
 Synchronus callback functions execute instantly, but asynchronous callback functions execute at a later time.
-//the fucntions who take othe rucntions as arguments, is called higher order functions
+//the fucntions who take other fucntions as arguments, is called higher order functions
 
 //Synchronous callback function example
-function parentFunction(name, callabck){
-    callabck();
+function parentFunction(name, callaback){
+    callaback();
     console.log("Hey "+name);
 
 

@@ -1,5 +1,5 @@
 npm init- 
-mpm install lodash -  to install package
+npm install lodash -  to install package
 npm publish
 npm adduser
 npm init -y -> all will be autometically typed
