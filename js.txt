@@ -313,3 +313,14 @@ parentFunction("Random String", function(){
 const parentFunction= (name, callback) =>
 (setTimeout(callback, 1000), console.log("Hey, "+name));
 parentFunction("Random string", () =>console.log("Hey, I am a callback function"));
+
+URLs:-
+
+URL stands for Uniform Resource Locator
+
+https://www.example.com/products?id=123&page=1#overview
+Protocol:http://
+Domain:www.example.com
+Path:/products
+Query String:id=123&page=1
+Fragment: overview
