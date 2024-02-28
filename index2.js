@@ -2,19 +2,18 @@ const http=require('http');
 const fs=require('fs');
 const server=http.createServer((req,res)=>{
     if(req.url=="/"){
-        const message="hey, what's your name";
-        fs.appendFile('ex6.txt',message+'\n','utf-8',(err)=>{
+        const message="hi,what is your name?";
+        fs.writeFile('ex2.txt',message,'utf-8',(err)=>{
             if(err){
                 console.error(err);
-    
-                res.end('Internal server error');
+                res.writeHead(200,{'Content-Type':'text/plain'});
+                res.end("Internal Server error");
+                return;                
             }
-            else{
-            res.end('FIle content appended: '+message);
-            }
-        });
-        
+            res.writeHead(200,{'Content-Type':'text/plain'});
+            res.end("File Content: "+message);
+        })
     }
 });
 const port=5000;
-server.listen(port,()=>console.log(`Server is running on http://localhost:${port}`));
+server.listen(port,()=>console.log(`The server is running on http://localhost:${port}`));
