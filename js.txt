@@ -324,3 +324,16 @@ Domain:www.example.com
 Path:/products
 Query String:id=123&page=1
 Fragment: overview
+
+_____________________________________________________________________________________
+Request Methods:
+GET: is used to get the request from a server
+POST: is used to submit data to be processed to a specified resource.
+PUT: is used to update an existing resource or create a new resource if it does nt exist at a specified url
+PATCH: partially updated. is used to apply partial modifications to a resource.
+DELETE: is used to request the removal of the speciified resource 
+
+-------------------------------------------------------------------------------------------------------------
+Middleware-
+that have access to the request object (req), the response object (res), and the next middleware function in the application's request-response cycle.
+#middleware serves as a bridge b/w a client request and server response in web applications.
