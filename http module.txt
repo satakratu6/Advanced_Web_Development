@@ -6,3 +6,5 @@ const server= http.createServer((req, res) => {
 });
 const port=4000;
 server.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
+
+write a function that takes two sorted arrays as input and returns a new sorted array containing all the elements of both arrays.

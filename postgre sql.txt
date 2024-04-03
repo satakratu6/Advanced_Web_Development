@@ -1,0 +1,22 @@
+postgre sql
+server [localhost]:
+Database [postgres]
+port [5432]
+Username [postgres]
+password for user postgres:
+CREATE DATABASE tudos
+\l -> for listing down all the databases
+CREATE DATABASE tudos;
+\c database_name: to connect to a specific database
+
+CREATE TABLE tudos (
+id SERIAL PRIMARY KEY,
+title TEXT NOT NULL,
+completed BOOLEAN NOT NULL
+);
+\dt -> to list all tables in current database
+\d table_name -> to describe the structure of a specific table
+select * from table_name -> to see the contents of the table
+
+\d tudos -> to see the table
+\c tudos->to set the table in our path

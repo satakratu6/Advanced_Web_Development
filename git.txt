@@ -8,6 +8,8 @@ git log -> to see the commit message
 git remote add <remote-name> <repository-url> -- to add the github repository
 git branch --list -> to see the branch name
 git push -u <remote-name> <branch-name> -> to push the files to repository
+
+
 git pull --rebase origin branch-name
 To resolve conflicts during a rebase:
 

@@ -1,0 +1,2 @@
+step 1: log in page - form- in where user will enter its name, contact number, email address, home address, locality, .
+step 2: creat an another form where the user will enter its sport details
