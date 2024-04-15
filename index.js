@@ -1,87 +1,65 @@
-<<<<<<< HEAD
-// function exampleFunction(){
-//     if(true){
-//         let functionScopedVar="I am function scoped";
-//     }
-//     console.log(functionScopedVar);
-// }
-// exampleFunction();
-// console.log(functionScopedVar);
-
-// hello();
-// function hello(){
-//     console.log("Hello world!");
-// }
-// let person={
-//     name: "Alice",
-//     age: 30,
-//     isStudent:false
-// };
-// console.log(person.name);
-let result=5+"5";
-console.log(result); //Type coercion
-let a=10;
-let b=5;
-console.log(a>b);
-console.log(1!==0);
-=======
 const express=require('express');
-const sequelize=require('./sequelize');
-const Todo=require('./models/Todo');
+const mongoose=require('mongoose');
+const path=require('path');
 const app=express();
-const port=3000;
-sequelize.authenticate()
-.then(()=>{
-    console.log('Connection has been established succesfully.');
-    return sequelize.sync({alter:true});
-})
-.then(()=>{
-    console.log("All models were synchronized succesfully.");
-})
-.catch((error)=>{
-    console.error('Unable to connect to the database:',error);
+const port=3002;
+app.use(express.json()); //middleware- for parsing the data in the server side
+app.use(express.static(path.join(__dirname,'public'))); 
+mongoose.connect('mongodb://127.0.0.1:27017/user_management_db')
+.then(()=> console.log('connected to MongoDB'))
+.catch(err=>console.error('error connecting to mongoDb:',err));
+const useerSchema=new mongoose.Schema({
+    name:String,
+    email:String,
+    password:String
 });
-app.use(express.json());
-//define endpoints
-app.get('/tudos',(req,res)=>{
-    Todo.findAll()
-    .then((tudos)=>{
-        res.json(tudos);
-    })
-    .catch((error)=>{
-        res.status(500).json({error:'Internal server error'});
+const User=mongoose.model('User',useerSchema);
+app.get('/users',(req,res)=>{
+    User.find({})
+    .then(users=>res.json(users))
+    .catch(err => res.status(500).json({
+        message:err.message
+    }));
+});
+app.post('/users',(req,res)=>{
+    const user=new User({
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password
     });
+    user.save()
+    .then(newUser =>res.status(201).json(newUser))
+    .catch(err=>res.status(400).json({message:err.message}));
 });
-app.post('/tudos',(req,res)=>{
-    const {title, completed}=req.body;
-    Todo.create({title,completed})
-    .then((todo)=>{
-        res.status(201).json(todo);
-    })
-    .catch((error)=>{
-        res.status(400).json({error:'Bad request'});
-    });
-});
-app.put('/tudos/:id',(req,res)=>{
-    const tudoId=req.params.id;
-    const {title, completed}=req.body;
-    Todo.findByPk(tudoId)
-    .then(todo =>{
-        if(!todo){
-            return res.status(404).json({error:'Todo not found'});
+app.put('/users/:id',(req,res)=>{
+    const userId=req.params.id;
+    const updateData={
+        name:req.body.name,
+        email:req.body.email,
+        password:req.body.password
+    };
+    User.findByIdAndUpdate(userId, updateData,{new:true})
+    .then(updatedUser =>{
+        if(!updatedUser){
+            return res.status(404).json({message:'User not found'});
         }
-        todo.title=title;
-        todo.completed=completed;
-        return todo.save();
+        res.json(updatedUser);
     })
-    .then(updateTodo=>{
-        res.json(updateTodo);
+    .catch(err=>res.status(400).json({message:err.message}));
+});
+app.delete('/users/:id',(req,res)=>{
+    const userId=req.params.id;
+    User.findByIdAndDelete(userId)
+    .then(deletedUser =>{
+        if(!deletedUser){
+            return res.status(404).json({message:'user not found'});
+        }
+        res.json({message:"User deleted succefully"});
     })
-    .catch(error =>{
-        res.status(500).json({error:'Internal Server error'});
-    });
+    .catch(err=>res.status(400).json({message:err.message}));
+    
+    
 });
-app.listen(port, ()=>{
-    console.log(`Server is running on http://localhost:${port}`);
-});
->>>>>>> 8bd3b7b (new)
+app.listen(port,()=>{
+    console.log(`It is running on port ${port}`);
+})
